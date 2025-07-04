@@ -10,7 +10,7 @@ app.use(cors());
 const dbConfig = {
     user: 'sa',
     password: 'jblimpeza2015',
-    server: 'srvdb01',
+    server: '187.111.30.158',
     database: 'SistemaFeedback',
     options: {
         encrypt: false, // true se usar Azure
