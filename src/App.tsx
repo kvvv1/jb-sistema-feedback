@@ -117,7 +117,8 @@ function App() {
       })),
     };
 
-    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+    // Defina a URL da API de forma flexível
+    const API_URL = import.meta.env.VITE_API_URL || 'https://jb-sistema-feedback.onrender.com';
 
     try {
       await fetch(`${API_URL}/api/feedback`, {
