@@ -76,7 +76,11 @@ function App() {
     }
   };
 
-  const handleEvaluationChange = (systemName: string, field: string, value: string | number) => {
+  const handleEvaluationChange = (
+    systemName: string,
+    field: keyof SystemEvaluationData,
+    value: string | number
+  ) => {
     setFormData((prev) => ({
       ...prev,
       systemEvaluations: {
@@ -113,8 +117,10 @@ function App() {
       })),
     };
 
+    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+
     try {
-      await fetch('http://localhost:3001/api/feedback', {
+      await fetch(`${API_URL}/api/feedback`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
@@ -350,7 +356,7 @@ function App() {
 
               <StarRating
                 rating={formData.developmentRating}
-                onRatingChange={(rating) => setFormData({ ...formData, developmentRating: rating })}
+                onRatingChange={(rating: number) => setFormData({ ...formData, developmentRating: rating })}
                 label="Como você avalia o trabalho de desenvolvimento e manutenção dos sistemas?"
               />
 
